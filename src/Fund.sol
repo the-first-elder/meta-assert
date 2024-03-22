@@ -33,7 +33,7 @@ contract Fund {
         uint256 totalAmount;
         for (uint256 funderIndex = 0; funderIndex < s_funders.length; funderIndex++) {
             address funder = s_funders[funderIndex];
-            totalAmount += userInfo[funder];
+            totalAmount = userInfo[funder];
             assert(totalAmount <= address(this).balance);
             (bool callSuccess,) = payable(funder).call{value: address(this).balance}("");
             require(callSuccess, "Call failed");
